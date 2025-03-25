@@ -1,6 +1,7 @@
 let items = [];
 const contenedor = document.getElementsByClassName("items");
 const botonEnviar = document.getElementById('boton');
+const bodyTabla = document.getElementById('tableBody');
 
 const anadirItem = () =>{
     let objeto = {
@@ -15,9 +16,7 @@ const anadirItem = () =>{
 }
 const refrescarPagina = () =>{
     items.forEach(item =>{
-        let contenedorItem = document.createElement("p");
-        contenedorItem.innerText = item.tarea;
-        contenedor.appendChild(contenedorItem);
+        let nombre = document.createElement("td");
     })
 }
 
