@@ -14,7 +14,7 @@ body{
 }
 
 .enviar{
-    width: 8%;
+    width: 10%;
     height: 30px;
     border-radius: 10px;
     text-align: center;
@@ -40,4 +40,12 @@ form{
 
 .table{
     margin: 1%;
+}
+
+.ToDo{
+    width: 100%;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    
 }

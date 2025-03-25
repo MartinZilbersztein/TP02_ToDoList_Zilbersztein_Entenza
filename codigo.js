@@ -1,3 +1,6 @@
+/*FALTA TACHAR LOS ITEMS, ARREGLAR DATE, BOTÓN BORRAR TODO, CALCULAR CUÁNDO FUE REALIZADO EL
+ITEM, BOTÓN DE QUÉ TAREA FUE LA MÁS RÁPIDA EN REALIZARSE*/
+
 let items = [];
 const contenedor = document.getElementsByClassName("items");
 const botonEnviar = document.getElementById('boton');
@@ -9,7 +12,7 @@ const anadirItem = () =>{
     let objeto = {
         id:obtenerId(idObjeto),
         tarea:document.getElementById('descripcion').value,
-        fechaCreacion:new Date(),
+        fechaCreacion:new Date(),//ARREGLAR
         realizado:false,
         fechaRealizacion:null
     }
@@ -43,3 +46,9 @@ const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
 
 const obtenerId = (id) => id++;
 
+const castFecha = (date) =>{
+    date = Intl.DateTimeFormat("es-sp", {
+        dateStyle:"short"
+    })
+    return date;
+}
