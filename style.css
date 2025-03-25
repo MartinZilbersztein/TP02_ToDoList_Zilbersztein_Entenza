@@ -2,23 +2,24 @@ body{
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
+    margin: 2%;
 }
 
 .agregar{
     width: 70%;
-    height: 30px;
+    height: 28px;
     border-radius: 10px;
-    font-size: large;
+    font-size: 15px;
     border: 2px solid rgb(27, 95, 27);
     margin: 0.5%;
 }
 
 .enviar{
     width: 10%;
-    height: 30px;
+    height: 28px;
     border-radius: 10px;
     text-align: center;
-    font-size: large;
+    font-size: 15px;
     background-color: rgb(27, 95, 27);
     color: white;
     margin: 0.5%;
@@ -39,13 +40,29 @@ form{
 }
 
 .table{
+    width: 70%;
     margin: 1%;
+    
 }
 
 .ToDo{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main{
     width: 100%;
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     justify-content: center;
-    
+    align-items: center;
 }
+
+th{
+    color:  rgb(23, 61, 23) !important;
+}
+
+.Title{
+    margin-top: 2%;}
