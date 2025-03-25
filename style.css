@@ -1,0 +1,43 @@
+body{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+.agregar{
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    font-size: large;
+    border: 2px solid rgb(27, 95, 27);
+    margin: 0.5%;
+}
+
+.enviar{
+    width: 8%;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: large;
+    background-color: rgb(27, 95, 27);
+    color: white;
+    margin: 0.5%;
+}
+
+.enviar:hover{
+    background-color: rgb(23, 61, 23);
+}
+
+.agregar:focus{
+    box-shadow: 2px 2px 2px gray;
+    outline:none;
+}
+
+form{
+    display: flex;
+    align-items: center;
+}
+
+.table{
+    margin: 1%;
+}
