@@ -14,26 +14,20 @@
 <body>
     <div class="ToDo">
         <input class="agregar" type="text">
-        <input  class="enviar" type="submit" value="Agregar tarea">
+        <input id="descripcion" class="enviar" type="submit" value="Agregar tarea" onclick="anadirItem()">
         
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">#</th>
+                <th scope="col">Done</th>
                 <th scope="col">Tarea</th>
                 <th scope="col">Fecha creación</th>
                 <th scope="col">Fecha realización</th>
             </tr>
             </thead>
             <tbody id="tableBody">
-                <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
