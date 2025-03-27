@@ -23,10 +23,12 @@ body{
     background-color: rgb(27, 95, 27);
     color: white;
     margin: 0.5%;
+    border: 1px solid rgb(23, 61, 23);
 }
 
 .enviar:hover{
     background-color: rgb(23, 61, 23);
+    box-shadow: 2px 2px 2px grey;
 }
 
 .agregar:focus{
@@ -40,7 +42,6 @@ form{
 }
 
 .table{
-    width: 70%;
     margin: 1%;
     
 }
