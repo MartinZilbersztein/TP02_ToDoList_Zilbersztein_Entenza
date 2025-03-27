@@ -65,5 +65,6 @@ const borrar = (itemB) => {
 }
 
 const borrarTodo = () => {
-
+    items = [];
+    refrescarPagina();
 }
