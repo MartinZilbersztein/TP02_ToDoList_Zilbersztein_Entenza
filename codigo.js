@@ -22,8 +22,9 @@ const anadirItem = () =>{
 const refrescarPagina = () =>{
     bodyTabla.innerText = "";
     items.forEach(item =>{
+        let claseResuelto = anadirEstiloResuelto(item.id-1);
         let row = `
-        <tr id="tr${item.id}">
+        <tr class="${claseResuelto}" id="tr${item.id}">
             <th scope="row">${item.id}</th>
             <td><input id="check${item.id}" type="checkbox" onclick="tacharItem(${item.id})"></td>
             <td>${item.tarea}</td>
@@ -31,10 +32,28 @@ const refrescarPagina = () =>{
             <td>${item.fechaRealizacion}</td>
             <td><img width="5%" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
+        chequearItem(item.id-1);
         document.getElementById('tableBody').innerHTML += row;
     });
 }
-const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
+
+const anadirEstiloResuelto = (id) =>{
+    let retorno;
+    console.log(items[id].Realizado);
+    if (items[id].Realizado)
+    {
+        retorno = "resuelto";
+    }
+    return retorno;
+}
+const chequearItem = (id) =>{
+    console.log(items[id].Realizado);
+    if (items[id].Realizado)
+    {
+        document.getElementById('check' + items[id].id).checked = true;
+    }
+}
+/*const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
     let objeto ={
         Id: id,
         Nombre: nombre,
@@ -43,15 +62,33 @@ const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
         Realizado: realizado
     }
     return objeto;
-}
+} 
+ESTO TODAVÍA NO FUNCIONA*/
 
 const obtenerId = (id) => id++;
 
 
 const tacharItem = (id) =>{
     const bodyItem = document.getElementById('tr' + id);
-    console.log(bodyItem);
     bodyItem.classList.toggle('resuelto');
+    items[id-1].fechaRealizacion = calcularFechaRealizacion(id-1);
+    refrescarPagina();
+}
+
+const calcularFechaRealizacion = (id) =>{
+    let yaFueRealizado = items[id].Realizado;
+    let fechaRealizado;
+    if (!yaFueRealizado)
+    {
+        fechaRealizado = new Date().toLocaleString()
+        items[id].Realizado = true;
+    }
+    else
+    {
+        fechaRealizado = "N/A";
+        items[id].Realizado = false;
+    }
+    return fechaRealizado;
 }
 
 const borrar = (itemB) => {
