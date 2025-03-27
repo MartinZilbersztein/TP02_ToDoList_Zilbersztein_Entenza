@@ -15,6 +15,11 @@
     <main>
     <div class="ToDo">
         <h4 class="Title">To-do</h4>
+        <div>
+            <input id="descripcion" class="agregar" type="text">
+            <input class="enviar" type="submit" onclick="anadirItem()">
+            <input class="enviar" type="submit" onclick="borrarTodo()" value="Eliminar todo">
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -29,11 +34,6 @@
                 
             </tbody>
         </table>
-        <div>
-            <input id="descripcion" class="agregar" type="text">
-            <input class="enviar" type="submit" onclick="anadirItem()">
-            
-        </div>
     </div>
 </main>
     <script src="codigo.js"></script>

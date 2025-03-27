@@ -30,6 +30,7 @@ const refrescarPagina = () =>{
             <td>${item.tarea}</td>
             <td>${item.fechaCreacion}</td>
             <td>${item.fechaRealizacion}</td>
+            <td><img width="5%" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
         chequearItem(item.id-1);
         document.getElementById('tableBody').innerHTML += row;
@@ -88,4 +89,19 @@ const calcularFechaRealizacion = (id) =>{
         items[id].Realizado = false;
     }
     return fechaRealizado;
+}
+
+const borrar = (itemB) => {
+    let indice = items.map(item => item.id).indexOf(itemB);
+    console.log(indice);
+    items.splice(indice, 1);
+    for(let i = indice; i <items.length; i++){
+        items[i].id--;
+    }
+    refrescarPagina();
+}
+
+const borrarTodo = () => {
+    items = [];
+    refrescarPagina();
 }
