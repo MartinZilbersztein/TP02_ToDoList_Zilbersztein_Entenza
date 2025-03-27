@@ -1,4 +1,4 @@
-/*FALTA TACHAR LOS ITEMS, ARREGLAR DATE, BOTÓN BORRAR TODO, CALCULAR CUÁNDO FUE REALIZADO EL
+/*FALTA TACHAR LOS ITEMS, BOTÓN BORRAR TODO, CALCULAR CUÁNDO FUE REALIZADO EL
 ITEM, BOTÓN DE QUÉ TAREA FUE LA MÁS RÁPIDA EN REALIZARSE*/
 
 let items = [];
@@ -12,9 +12,9 @@ const anadirItem = () =>{
     let objeto = {
         id:obtenerId(idObjeto),
         tarea:document.getElementById('descripcion').value,
-        fechaCreacion:new Date(),//ARREGLAR
+        fechaCreacion:new Date().toLocaleString(),
         realizado:false,
-        fechaRealizacion:null
+        fechaRealizacion:"N/A"
     }
     items.push(objeto);
     refrescarPagina();
@@ -23,9 +23,9 @@ const refrescarPagina = () =>{
     bodyTabla.innerText = "";
     items.forEach(item =>{
         let row = `
-        <tr>
+        <tr id="tr${item.id}">
             <th scope="row">${item.id}</th>
-            <td><input type="checkbox"></td>
+            <td><input id="check${item.id}" type="checkbox" onclick="tacharItem(${item.id})"></td>
             <td>${item.tarea}</td>
             <td>${item.fechaCreacion}</td>
             <td>${item.fechaRealizacion}</td>
@@ -46,9 +46,9 @@ const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
 
 const obtenerId = (id) => id++;
 
-const castFecha = (date) =>{
-    date = Intl.DateTimeFormat("es-sp", {
-        dateStyle:"short"
-    })
-    return date;
+
+const tacharItem = (id) =>{
+    const bodyItem = document.getElementById('tr' + id);
+    console.log(bodyItem);
+    bodyItem.classList.toggle('resuelto');
 }
