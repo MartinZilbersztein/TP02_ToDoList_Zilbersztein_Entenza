@@ -29,6 +29,7 @@ const refrescarPagina = () =>{
             <td>${item.tarea}</td>
             <td>${item.fechaCreacion}</td>
             <td>${item.fechaRealizacion}</td>
+            <td><img width="5%" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
         document.getElementById('tableBody').innerHTML += row;
     });
@@ -51,4 +52,18 @@ const castFecha = (date) =>{
         dateStyle:"short"
     })
     return date;
+}
+
+const borrar = (itemB) => {
+    let indice = items.map(item => item.id).indexOf(itemB);
+    console.log(indice);
+    items.splice(indice, 1);
+    for(let i = indice; i <items.length; i++){
+        items[i].id--;
+    }
+    refrescarPagina();
+}
+
+const borrarTodo = () => {
+
 }
