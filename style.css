@@ -67,7 +67,9 @@ th{
 .Title{
     margin-top: 2%;
 }
-
 .resuelto{
-    text-decoration: line-through;
+    text-decoration:line-through;
 }
+
+/*DIV OCULTO DENTRO DE CADA ÍTEM DE LA TABLA, ALINEADO VERTICALMENTE, (HIDDEN) Y CON 
+1 PX BORDER NEGRO*/
