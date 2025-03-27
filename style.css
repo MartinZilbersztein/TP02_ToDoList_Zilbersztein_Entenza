@@ -28,7 +28,9 @@ body{
 .enviar:hover{
     background-color: rgb(23, 61, 23);
 }
-
+.borrar:hover{
+    cursor:pointer;
+}
 .agregar:focus{
     box-shadow: 2px 2px 2px gray;
     outline:none;

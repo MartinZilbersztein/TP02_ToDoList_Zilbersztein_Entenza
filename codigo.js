@@ -1,4 +1,4 @@
-/*FALTA TACHAR LOS ITEMS, BOTÓN BORRAR TODO, CALCULAR CUÁNDO FUE REALIZADO EL
+/*FALTA TACHAR LOS ITEMS, CALCULAR CUÁNDO FUE REALIZADO EL
 ITEM, BOTÓN DE QUÉ TAREA FUE LA MÁS RÁPIDA EN REALIZARSE*/
 
 let items = [];
@@ -30,7 +30,7 @@ const refrescarPagina = () =>{
             <td>${item.tarea}</td>
             <td>${item.fechaCreacion}</td>
             <td>${item.fechaRealizacion}</td>
-            <td><img width="5%" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
+            <td><img width="5%" class="borrar" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
         chequearItem(item.id-1);
         document.getElementById('tableBody').innerHTML += row;
@@ -39,16 +39,15 @@ const refrescarPagina = () =>{
 
 const anadirEstiloResuelto = (id) =>{
     let retorno;
-    console.log(items[id].Realizado);
-    if (items[id].Realizado)
+    if (items[id].realizado)
     {
         retorno = "resuelto";
     }
     return retorno;
 }
 const chequearItem = (id) =>{
-    console.log(items[id].Realizado);
-    if (items[id].Realizado)
+    console.log(items[id].realizado);
+    if (items[id].realizado)
     {
         document.getElementById('check' + items[id].id).checked = true;
     }
