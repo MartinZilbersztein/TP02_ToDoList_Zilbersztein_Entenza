@@ -65,4 +65,9 @@ th{
 }
 
 .Title{
-    margin-top: 2%;}
+    margin-top: 2%;
+}
+
+.resuelto{
+    text-decoration: line-through;
+}
