@@ -106,21 +106,32 @@ const borrarTodo = () => {
 
 const obtenerRapidezTarea = () =>{
     let tareaRapida = {
+        tarea: null,
+        calculo: Infinity
     };
     items.forEach(item=>{
         if (item.realizado)
         {
             let date1 = new Date(item.fechaRealizacion);
-            let date2 = new Date(item.fechaCreacion).toLocaleString();
-            console.log(date1, date2);
-            console.log(date1.getTime()-date2.getTime());
-            if (date1-date2 > tareaRapida.fechaRealizacion - tareaRapida.fechaCreacion)
-            {
-                tareaRapida.tarea = item.tarea;
-                tareaRapida.calculo = item.fechaRealizacion-item.fechaCreacion;
+            let date2 = new Date(item.fechaCreacion);
+            let resta = date1.getTime() - date2.getTime();
+            if(tareaRapida.tarea !== null){
+                console.log(tareaRapida.calculo);
+                console.log (resta);
+
+                if (date1.getTime()-date2.getTime() < tareaRapida.calculo)
+                {
+                    tareaRapida.tarea = item.tarea;
+                    tareaRapida.calculo = date1 - date2;
+                }
+            }
+            else{
+                tareaRapida.tarea=item.tarea;
+                tareaRapida.calculo = date1.getTime() - date2.getTime();
             }
         }
     })
-    document.getElementById('tarearapida').innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + tareaRapida.calculo;
+    if(tareaRapida.tarea !== null)
+    document.getElementById('tarearapida').innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + (tareaRapida.calculo)/1000 + " segundos";
     return tareaRapida;
 }
