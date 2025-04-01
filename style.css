@@ -47,9 +47,14 @@ form{
 .table{
     width:100%;
     margin: 1%;
+    margin-bottom: 0.5%;
+    table-layout: fixed;
 }
 
-
+th{
+    width: 80px;
+    overflow: auto;
+  }
 
 .ToDo{
     width: 70%;

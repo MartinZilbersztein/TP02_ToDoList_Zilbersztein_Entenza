@@ -39,7 +39,7 @@ const refrescarPagina = () =>{
             <td>${item.tarea}</td>
             <td>${item.fechaCreacion}</td>
             <td>${item.fechaRealizacion}</td>
-            <td><img width="5%" class="borrar" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
+            <td><img width="10%" class="borrar" src="/images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
         // document.getElementById('tableBody').innerHTML += row;
         document.getElementById('tableBody').insertAdjacentHTML('beforeend', row);//Usando esto en lugar de la línea de arriba, se puede lograr marcar como resuelta cualquier tarea
