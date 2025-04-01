@@ -4,6 +4,7 @@ let items = [];
 const contenedor = document.getElementsByClassName("items");
 const botonEnviar = document.getElementById('boton');
 const bodyTabla = document.getElementById('tableBody');
+const textoTarea = document.getElementById('tarearapida');
 let id = 0;
 
 const anadirItem = () =>{
@@ -90,6 +91,7 @@ const borrar = (itemB) => {
 
 const borrarTodo = () => {
     items = [];
+    textoTarea.innerHTML = "";
     refrescarPagina();
 }
 
@@ -121,6 +123,6 @@ const obtenerRapidezTarea = () =>{
         }
     })
     if(tareaRapida.tarea !== null)
-    document.getElementById('tarearapida').innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + (tareaRapida.calculo)/1000 + " segundos";
+    textoTarea.innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + (tareaRapida.calculo)/1000 + " segundos";
     return tareaRapida;
 }
