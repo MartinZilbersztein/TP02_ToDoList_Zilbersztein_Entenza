@@ -16,8 +16,16 @@ const anadirItem = () =>{
         realizado:false,
         fechaRealizacion:"N/A"
     }
-    items.push(objeto);
-    refrescarPagina();
+    if(objeto.tarea.trim().length == 0){
+        let devEnviar = document.getElementById('devEnviar');
+        devEnviar.style.color="red";
+        devEnviar.innerHTML = `No se puede enviar una tarea vacía`;
+    }
+    else{
+        devEnviar.innerHTML = ``;
+        items.push(objeto);
+        refrescarPagina();
+    }
 }
 const refrescarPagina = () =>{
     bodyTabla.innerText = "";
@@ -125,4 +133,17 @@ const obtenerRapidezTarea = () =>{
     if(tareaRapida.tarea !== null)
     textoTarea.innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + (tareaRapida.calculo)/1000 + " segundos";
     return tareaRapida;
+}
+
+const verificarTarea = () =>{
+    let tarea = document.getElementById("descripcion").value;
+    let dev = document.getElementById("devInput");
+    tarea=tarea.trim();
+    dev.style.color = "red";
+    if (tarea.length==0){
+        dev.innerHTML = `<p>La tarea no puede estar vacía</p>`;
+    }
+    else{
+        dev.innerHTML = ``;
+    }
 }

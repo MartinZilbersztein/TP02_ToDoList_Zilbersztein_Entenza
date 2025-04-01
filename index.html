@@ -15,13 +15,15 @@
     <main>
     <div class="ToDo">
         <h4 class="Title">To-do</h4>
-        <div>
-            <input id="descripcion" class="agregar" type="text">
-            <input class="enviar" type="submit" onclick="anadirItem()" value="Enviar">
+        <div class="send">
+        <input id="descripcion" oninput="verificarTarea()" onchange="verificarTarea()" class="agregar" type="text">
+        <input class="enviar" type="submit" onclick="anadirItem()" value="Enviar">  
+        <p id="devInput"></p>
+        <div id="devEnviar"></div>
             <input class="enviar" type="submit" onclick="borrarTodo()" value="Eliminar todo">
             <input class="enviar" type="submit" onclick="obtenerRapidezTarea()" value="Ver tarea más rapida">
         </div>
-        <table class="table table-hover">
+        <table class="table table-hover table-responsive">
             <thead>
             <tr>
                 <th scope="col">Id</th>
