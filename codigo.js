@@ -53,17 +53,6 @@ const chequearItem = (id) =>{
         document.getElementById('check' + items[id].id).checked = true;
     }
 }
-/*const crearObjeto = (id, nombre, fechaCreacion, fechaRealizacion, realizado) =>{
-    let objeto ={
-        Id: id,
-        Nombre: nombre,
-        FechaCreacion: fechaCreacion,
-        FechaRealizacion: fechaRealizacion,
-        Realizado: realizado
-    }
-    return objeto;
-} 
-ESTO TODAVÍA NO FUNCIONA*/
 
 const obtenerId = (id) => id++;
 
