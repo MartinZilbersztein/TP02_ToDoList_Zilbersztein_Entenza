@@ -12,7 +12,7 @@ const anadirItem = () =>{
     let objeto = {
         id:obtenerId(idObjeto),
         tarea:document.getElementById('descripcion').value,
-        fechaCreacion:new Date().toLocaleString(),
+        fechaCreacion:new Date(),
         realizado:false,
         fechaRealizacion:"N/A"
     }
@@ -31,14 +31,14 @@ const refrescarPagina = () =>{
     bodyTabla.innerText = "";
     items.forEach(item =>{
         let claseResuelto = anadirEstiloResuelto(item.id-1);
-        console.log("el item fue realizado " + item.realizado)
+        console.log("el item fue realizado " + item.realizado);
         let row = `
         <tr class="${claseResuelto}" id="tr${item.id}">
             <th scope="row">${item.id}</th>
             <td><input id="check${item.id}" type="checkbox" onclick="tacharItem(${item.id})"></td>
             <td>${item.tarea}</td>
-            <td>${item.fechaCreacion}</td>
-            <td>${item.fechaRealizacion}</td>
+            <td>${item.fechaCreacion.toLocaleString()}</td>
+            <td>${item.fechaRealizacion.toLocaleString()}</td>
             <td><img width="10%" class="borrar" src="images/TachoBorrar.png" onclick="borrar(${item.id})"></td>
         </tr>`;
         // document.getElementById('tableBody').innerHTML += row;
@@ -76,7 +76,7 @@ const calcularRealizacion = (id) =>{
     let fechaRealizado;
     if (!yaFueRealizado)
     {
-        fechaRealizado = new Date().toLocaleString()
+        fechaRealizado = new Date()
         items[id].realizado = true;
     }
     else
@@ -89,7 +89,6 @@ const calcularRealizacion = (id) =>{
 
 const borrar = (itemB) => {
     let indice = items.map(item => item.id).indexOf(itemB);
-    console.log(indice);
     items.splice(indice, 1);
     for(let i = indice; i <items.length; i++){
         items[i].id--;
@@ -104,33 +103,35 @@ const borrarTodo = () => {
 }
 
 const obtenerRapidezTarea = () =>{
+    
     let tareaRapida = {
         tarea: null,
         calculo: Infinity
     };
-    items.forEach(item=>{
-        if (item.realizado)
+    let encontrado = false, id = 0, date1, date2;
+    while(!encontrado && id < items.length - 1){
+        if (items[id].fechaRealizacion != "N/A")
         {
-            let date1 = new Date(item.fechaRealizacion);
-            let date2 = new Date(item.fechaCreacion);
-            let resta = date1.getTime() - date2.getTime();
-            if(tareaRapida.tarea !== null){
-                console.log(tareaRapida.calculo);
-                console.log (resta);
+            encontrado = true;
+            date1 = new Date(items[id].fechaRealizacion);
+            date2 = new Date(items[id].fechaCreacion);
+            tareaRapida.calculo = date1.getTime() - date2.getTime();
+            tareaRapida.tarea = items[id].tarea;
+        }
+        else id++;
+    }
 
-                if (date1.getTime()-date2.getTime() < tareaRapida.calculo)
-                {
-                    tareaRapida.tarea = item.tarea;
-                    tareaRapida.calculo = date1 - date2;
-                }
-            }
-            else{
-                tareaRapida.tarea=item.tarea;
-                tareaRapida.calculo = date1.getTime() - date2.getTime();
+    items.map(item =>{
+        if (item.fechaRealizacion != "N/A")
+        {
+            
+            if ((item.fechaRealizacion.getTime()-item.fechaCreacion.getTime()) < tareaRapida.calculo)
+            {
+                tareaRapida.tarea = item.tarea;
+                tareaRapida.calculo = item.fechaRealizacion.getTime() - item.fechaCreacion.getTime();
             }
         }
-    })
-    if(tareaRapida.tarea !== null)
+    });
     textoTarea.innerHTML= "La tarea más rápida en realizarse fue " + tareaRapida.tarea + ", que tardó " + (tareaRapida.calculo)/1000 + " segundos";
     return tareaRapida;
 }
